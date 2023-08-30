@@ -1,0 +1,176 @@
+definitions:
+  handlers.HTTPError:
+    properties:
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  types.Todo:
+    properties:
+      description:
+        description: |-
+          The todo description
+          example: Finish coding the backend
+        type: string
+      id:
+        description: The todo ID
+        type: integer
+      title:
+        description: |-
+          The todo title
+          example: Complete project
+        type: string
+    required:
+    - description
+    - title
+    type: object
+  types.TodoRequest:
+    properties:
+      description:
+        description: |-
+          The todo description
+          example: Finish coding the backend
+        type: string
+      title:
+        description: |-
+          The todo ID
+          The todo title
+          example: Complete project
+        type: string
+    required:
+    - description
+    - title
+    type: object
+info:
+  contact: {}
+  description: This is a todo list management application.
+  termsOfService: http://swagger.io/terms/
+  title: TODO Application
+  version: "1.0"
+paths:
+  /api/v1/todos:
+    get:
+      description: Get a list of all todos
+      operationId: get-todos
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              items:
+                $ref: '#/definitions/types.Todo'
+              type: array
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HTTPError'
+      summary: Get all todos
+      tags:
+      - todos
+    post:
+      description: Create a todo
+      operationId: create-todo
+      parameters:
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/types.TodoRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/types.Todo'
+            type: array
+      summary: Create a todo
+      tags:
+      - todos
+  /api/v1/todos/{id}:
+    delete:
+      description: Delete a todo
+      operationId: delete-todo-by-id
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/types.Todo'
+            type: array
+      summary: Delete a todo
+      tags:
+      - todos
+    get:
+      description: Get a todo by id
+      operationId: get-todo-by-id
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/types.Todo'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handlers.HTTPError'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handlers.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handlers.HTTPError'
+      summary: Get todo by id
+      tags:
+      - todos
+    put:
+      description: Update a todo by id
+      operationId: update-todo-by-id
+      parameters:
+      - description: Todo ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/types.Todo'
+            type: array
+      summary: Update a todo by id
+      tags:
+      - todos
+swagger: "2.0"
