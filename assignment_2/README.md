@@ -2,6 +2,14 @@
 
 Glim Indico Assignments 2
 
+Assignment 2 : Gunakan Session GO Pada Halaman Login dan Registrasi
+
+# Prerequisite
+
+```
+Install Docker
+```
+
 # Step
 
 ```
