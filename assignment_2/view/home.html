@@ -1,0 +1,106 @@
+{{define "home"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+    <meta
+      name="description"
+      content="A basic custom template for Pico using only CSS custom properties (variables). Built with Pico CSS."
+    />
+    <link rel="shortcut icon" href="https://picocss.com/favicon.ico" />
+    <link rel="canonical" href="https://picocss.com/examples/basic-template/" />
+
+    <!-- Pico.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+
+    <!-- Custom template-->
+    <link rel="stylesheet" href="css/custom.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="container">
+      <hgroup>
+        <h1>Home</h1>
+        <h2>Your Profile Page</h2>
+      </hgroup>
+    </header>
+    <!-- ./ Header -->
+
+    <!-- Main -->
+    <main class="container">
+      <!-- Article-->
+      <p>Welcome {{.Username}},</p>
+      <p>Logout? <a href="/logout">Click Here</a></p>
+      <article id="Your Profile">
+        <h2>Profile</h2>
+        <p>Your Name: {{.FirstName}} {{.LastName}}</p>
+        <footer>
+          <small>GLIM INDICO 2023</small>
+        </footer>
+      </article>
+      <!-- ./ Article-->
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Footer -->
+    <footer class="container">
+      <small
+        >Built with <a href="https://picocss.com">Pico</a> •
+        <a
+          href="https://github.com/picocss/examples/blob/master/v1-basic-template/"
+          >Source code</a
+        ></small
+      >
+    </footer>
+    <!-- ./ Footer -->
+
+    <!-- Modal example -->
+    <dialog id="modal-example">
+      <article>
+        <a
+          href="#close"
+          aria-label="Close"
+          class="close"
+          data-target="modal-example"
+          onclick="toggleModal(event)"
+        ></a>
+        <h3>Confirm your action!</h3>
+        <p>
+          Cras sit amet maximus risus. Pellentesque sodales odio sit amet augue
+          finibus pellentesque. Nullam finibus risus non semper euismod.
+        </p>
+        <footer>
+          <a
+            href="#cancel"
+            role="button"
+            class="secondary"
+            data-target="modal-example"
+            onclick="toggleModal(event)"
+            >Cancel</a
+          ><a
+            href="#confirm"
+            role="button"
+            data-target="modal-example"
+            onclick="toggleModal(event)"
+            >Confirm</a
+          >
+        </footer>
+      </article>
+    </dialog>
+    <!-- ./ Modal example -->
+
+    <!-- Minimal theme switcher -->
+    <script src="js/minimal-theme-switcher.js"></script>
+
+    <!-- Modal -->
+    <script src="js/modal.js"></script>
+  </body>
+</html>
+
+{{end}}
