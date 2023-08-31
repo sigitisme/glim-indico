@@ -1,11 +1,5 @@
 package models
 
-type UserData struct {
-	Username  string
-	FirstName string
-	LastName  string
-}
-
 type User struct {
 	ID        uint   `gorm:"primaryKey;type:int;autoIncrement"`
 	Username  string `gorm:"column:username;type:varchar(50);not null"`
