@@ -20,4 +20,4 @@ go run main.go
 
 open browser http://localhost:8080/
 
-![](https://github.com/sigitisme/glim-indico/assignment_3_final/demo.gif)
+![](https://github.com/sigitisme/glim-indico/blob/main/assignment_3_final/demo.gif)
